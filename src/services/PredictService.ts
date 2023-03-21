@@ -9,8 +9,9 @@ class PredictService{
     async predict(image: IImageFile){
         const model = await tf.loadLayersModel("file://my_model/model.json");
         const img = tf.node.decodeImage(image.data).resizeBilinear([224, 224]);
-        const prediction = model.predict(img);
-        console.log(prediction);
+        const batchedImg = img.expandDims();
+        const prediction = (model.predict(batchedImg) as tf.Tensor).print();
+        return prediction;
     }
 }
 

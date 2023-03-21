@@ -1,3 +1,4 @@
 node_modules
-animals
+data_training
+build
 .env

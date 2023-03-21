@@ -14,9 +14,9 @@ class TrainingService {
         });
 
         // Train the model
-        const epochs = 10;
+        const epochs = 30;
         // let data = createDataset();
-        let trainDataset = tf.data.generator(createDataset).batch(1);
+        let trainDataset = tf.data.generator(createDataset).batch(16);
         model.fitDataset(trainDataset, {
             epochs: epochs,
         });
